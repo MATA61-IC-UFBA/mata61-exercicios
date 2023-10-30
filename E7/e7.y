@@ -9,8 +9,12 @@ int yylex();
 
 void yyerror(char *s, ...)
 {
+    
     fprintf(stderr,"%s\n",s);
 }
+
+int parser_result;
+
 %}
 
 /* declare tokens */ 
@@ -27,22 +31,23 @@ void yyerror(char *s, ...)
 
 %%
 program
-: expr EOL { return 0; }
+: expr EOL { parser_result = $1; return 0;}
 ;
 
 expr
-: expr PLUS term
-| expr MINUS term
-| term
+: expr PLUS term { $$ = $1 + $3; }
+| expr MINUS term { $$ = $1 - $3; }
+| term             { $$ = $1; }
 ;
 
 term
-: term TIMES factor
-| factor
+: term TIMES factor { $$ = $1 * $3; }
+| factor { $$ = $1; }
 ;
 
 factor
-: NUMBER 
+: NUMBER { $$ = $1; }
+| OPENP expr CLOSEP { $$ = $2; }
 ;
 
 %%
