@@ -1,18 +1,20 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include "e8.tab.h"
+#include "ast.h"
 
 /* parser */
 
-int yyparse();
+struct ast * ast_tree = yyparse();
 /* definir e atribuir valor a parser_result em e8.y */
 
 int main()
 {
-    if (yyparse()) 
-	fprintf(stdout, "syntax error\n");
+    if (!ast_tree) 
+	    fprintf(stdout, "syntax error\n");
     else
-	fprintf(stdout,"%d\n", parser_result); /* modificar para chamar expr_evaluate */
-     
-    exit(0);
+	// fprintf(stdout,"%d\n", parser_result); /* modificar para chamar expr_evaluate */
+        int evaluate = ast_evaluate( ast_tree );
+        fprintf(stdout, "%d\n", evaluate);
+        exit(0);
 }
