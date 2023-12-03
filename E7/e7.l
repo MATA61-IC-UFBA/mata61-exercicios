@@ -1,4 +1,4 @@
-/* recognize tokens for the calculator */ 
+/* recognize tokens for the calculator */
 
 %option noyywrap nodefault yylineno
 %{
@@ -15,7 +15,8 @@ void yyerror(char *s, ...);
 "(" 	{ return OPENP; } 
 ")" 	{ return CLOSEP; } 
 
-[0-9]+ 	{ return NUMBER; }  /* fazer conversão para int aqui */
+[0-9]+ 	{   yylval.integer_value = atoi(yytext);
+            return NUMBER; }  /* fazer conversão para int aqui */
 [ \t] 	{ /* ignore white space */ }
 \n      { return EOL; }
 .   	{ return ERROR; }
