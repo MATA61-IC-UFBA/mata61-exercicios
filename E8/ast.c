@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "ast.h"
-
+#ifndef FUNC_AST
+#define FUNC_AST
 struct ast * ast_create( 
     ast_t kind,
     struct ast *left,
@@ -21,6 +19,7 @@ struct ast * ast_create_value( int value ){
     return e;
 }
 
+/*
 int ast_evaluate( struct ast *e ){
     if(!e) return 0;
 
@@ -41,6 +40,7 @@ int ast_evaluate( struct ast *e ){
     }
     return 0;
 }
+*/
 
 void ast_print( struct ast *e ){
     if(!e) return;
@@ -59,3 +59,5 @@ void ast_print( struct ast *e ){
     ast_print(e->right);
     printf(")");
 }
+
+#endif

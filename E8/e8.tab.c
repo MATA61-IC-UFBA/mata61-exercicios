@@ -73,20 +73,22 @@
 #include <stdlib.h>
 /* interface to the lexer */
 #include "ast.h"
+#include "ast.c"
 #define YYSTYPE struct ast *
-struct ast * parser_result;
 
 
-extern int yylineno; /* from lexer */
 int yylex();
+extern int yylineno; /* from lexer */
+extern char *yytext;
 
 void yyerror(char *s, ...)
 {
     // fprintf(stderr,"%s\n",s);
 }
+struct ast * parser_result = 0;
 
 
-#line 90 "e8.tab.c"
+#line 92 "e8.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -516,7 +518,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    44,    44,    48,    49,    50,    54,    55,    59,    60
+       0,    50,    50,    54,    55,    56,    60,    61,    65,    66
 };
 #endif
 
@@ -1079,55 +1081,55 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* program: expr EOL  */
-#line 44 "e8.y"
-           { parser_result = (yyvsp[-1].ast_value); return 0; }
-#line 1085 "e8.tab.c"
+#line 50 "e8.y"
+           { parser_result = yyvsp[-1]; return 0; }
+#line 1087 "e8.tab.c"
     break;
 
   case 3: /* expr: expr PLUS term  */
-#line 48 "e8.y"
-                 { (yyval.ast_value) = ast_create(AST_PLUS, (yyvsp[-2].ast_value), (yyvsp[0].ast_value)); }
-#line 1091 "e8.tab.c"
+#line 54 "e8.y"
+                 { yyval = ast_create(AST_PLUS, yyvsp[-2], yyvsp[0]); }
+#line 1093 "e8.tab.c"
     break;
 
   case 4: /* expr: expr MINUS term  */
-#line 49 "e8.y"
-                  { (yyval.ast_value) = ast_create(AST_MINUS, (yyvsp[-2].ast_value), (yyvsp[0].ast_value)); }
-#line 1097 "e8.tab.c"
+#line 55 "e8.y"
+                  { yyval = ast_create(AST_MINUS, yyvsp[-2], yyvsp[0]); }
+#line 1099 "e8.tab.c"
     break;
 
   case 5: /* expr: term  */
-#line 50 "e8.y"
-       { (yyval.ast_value) = (yyvsp[0].ast_value); }
-#line 1103 "e8.tab.c"
+#line 56 "e8.y"
+       { yyval = yyvsp[0]; }
+#line 1105 "e8.tab.c"
     break;
 
   case 6: /* term: term TIMES factor  */
-#line 54 "e8.y"
-                    { (yyval.ast_value) = ast_create(AST_TIMES, (yyvsp[-2].ast_value), (yyvsp[0].ast_value)); }
-#line 1109 "e8.tab.c"
+#line 60 "e8.y"
+                    { yyval = ast_create(AST_TIMES, yyvsp[-2], yyvsp[0]); }
+#line 1111 "e8.tab.c"
     break;
 
   case 7: /* term: factor  */
-#line 55 "e8.y"
-         { (yyval.ast_value) = (yyvsp[0].ast_value); }
-#line 1115 "e8.tab.c"
+#line 61 "e8.y"
+         { yyval = yyvsp[0]; }
+#line 1117 "e8.tab.c"
     break;
 
   case 8: /* factor: NUMBER  */
-#line 59 "e8.y"
-         { (yyval.ast_value) = ast_create_value( atoi( yytext ) ); }
-#line 1121 "e8.tab.c"
+#line 65 "e8.y"
+         { yyval = ast_create_value( atoi( yytext ) ); }
+#line 1123 "e8.tab.c"
     break;
 
   case 9: /* factor: OPENP expr CLOSEP  */
-#line 60 "e8.y"
-                    { (yyval.ast_value) = (yyvsp[-1].ast_value); }
-#line 1127 "e8.tab.c"
+#line 66 "e8.y"
+                    { yyval = yyvsp[-1]; }
+#line 1129 "e8.tab.c"
     break;
 
 
-#line 1131 "e8.tab.c"
+#line 1133 "e8.tab.c"
 
       default: break;
     }
@@ -1320,6 +1322,6 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 63 "e8.y"
+#line 69 "e8.y"
 
 

@@ -3,28 +3,33 @@
 #include <stdlib.h>
 /* interface to the lexer */
 #include "ast.h"
+#include "ast.c"
 #define YYSTYPE struct ast *
-struct ast * parser_result;
 
 
-extern int yylineno; /* from lexer */
 int yylex();
+extern int yylineno; /* from lexer */
+extern char *yytext;
 
 void yyerror(char *s, ...)
 {
     // fprintf(stderr,"%s\n",s);
 }
+struct ast * parser_result = 0;
 
 %}
 
-%union{
     /* minhas variáveis */
+/*
+%union{
     struct ast * ast_value;
 }
+*/
 
 /* declare tokens */ 
 
-%token <ast_value> NUMBER
+//%token <ast_value> NUMBER
+%token NUMBER
 %token ERROR
 %token EOL
 %token PLUS
@@ -33,10 +38,11 @@ void yyerror(char *s, ...)
 %token OPENP
 %token CLOSEP
 
+/*
 %type <ast_value> expr
 %type <ast_value> term
 %type <ast_value> factor
-
+*/
 %start program
 
 %%
