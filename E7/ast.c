@@ -1,61 +1,43 @@
-#include "ast.h"
+#include <stdio.h>
 #include <stdlib.h>
+#include "ast.h"
 
-AstNode* createValueNode(int value) {
-    AstNode* node = (AstNode*)malloc(sizeof(AstNode));
-    node->type = VALUE;
-    node->value = value;
-    node->left = NULL;
-    node->right = NULL;
-    return node;
+struct expr* expr_create_value(int value) {
+	struct expr *e = expr_create(EXPR_VALUE,0,0);
+	e->value = value;
+    	return e;
 }
 
-AstNode* createAddNode(AstNode* left, AstNode* right) {
-    AstNode* node = (AstNode*)malloc(sizeof(AstNode));
-    node->type = ADD;
-    node->left = left;
-    node->right = right;
-    return node;
+struct expr* expr_create(expr_t kind, 
+			 struct expr *left, 
+			 struct expr *right) {
+	struct expr *e = malloc(sizeof(*e));
+	e->kind = kind;
+	e->value = 0;
+	e->left = left;
+	e->right = right;
+	return e;
 }
 
-AstNode* createSubNode(AstNode* left, AstNode* right) {
-    AstNode* node = (AstNode*)malloc(sizeof(AstNode));
-    node->type = SUB;
-    node->left = left;
-    node->right = right;
-    return node;
-}
+int expr_evaluate(struct expr *e) {
 
-AstNode* createMulNode(AstNode* left, AstNode* right) {
-    AstNode* node = (AstNode*)malloc(sizeof(AstNode));
-    node->type = MUL;
-    node->left = left;
-    node->right = right;
-    return node;
-}
+    if (!e) return 0;
 
-AstNode* createParenNode(AstNode* child) {
-    return child;
-}
-
-int evaluate(AstNode* root) {
-    if (root->type == VALUE) {
-        return root->value;
-    } else if (root->type == ADD) {
-        return evaluate(root->left) + evaluate(root->right);
-    } else if (root->type == SUB) {
-        return evaluate(root->left) - evaluate(root->right);
-    } else if (root->type == MUL) {
-        return evaluate(root->left) * evaluate(root->right);
+    int l = expr_evaluate(e->left);
+    int r = expr_evaluate(e->right);
+ 
+    switch(e->kind) {
+	case EXPR_VALUE: { return e->value; }
+        case EXPR_ADD: { return l+r; }
+        case EXPR_SUBTRACT: { return l-r; }
+        case EXPR_MULTIPLY: { return l*r; }
+        case EXPR_DIVIDE: if (r != 0) 
+				  return l/r; 
+			  else { 
+				  fprintf(stdout,"runtime error: divide by zero\n"); 
+				  fprintf(stderr,"runtime error: divide by zero\n");
+				  exit(1); 
+			       }
     }
-    return 0;  // Handle error case
-}
-
-void freeTree(AstNode* root) {
-    if (root == NULL) {
-        return;
-    }
-    freeTree(root->left);
-    freeTree(root->right);
-    free(root);
+    return 0;
 }

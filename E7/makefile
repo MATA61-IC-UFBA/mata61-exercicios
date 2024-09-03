@@ -18,6 +18,5 @@ all:
 clean: 
 	rm e7.tab.*
 	rm lex.yy.*
-	rm *.o
 
 

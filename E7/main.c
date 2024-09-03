@@ -1,18 +1,23 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include "e7.tab.h"
+#include "ast.h"
 
 /* parser */
 
 int yyparse();
-/* definir e atribuir valor a parser_result em e7.y */
+
+extern struct expr* parser_result;
 
 int main()
 {
-    if (yyparse()) 
-	fprintf(stdout, "syntax error\n");
+    if (!yyparse()) {
+	fprintf(stdout, "%d\n", expr_evaluate(parser_result));
+    }
     else
-	fprintf(stdout,"%d\n", parser_result); /* modificar para chamar expr_evaluate */
-     
+	fprintf(stderr, "syntax error\n");
+
     exit(0);
 }
+
+

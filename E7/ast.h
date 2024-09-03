@@ -1,29 +1,24 @@
-#ifndef AST_H
-#define AST_H
 
-enum NodeType {
-    VALUE,
-    ADD,
-    SUB,
-    MUL,
-    PAREN
-};
+typedef enum {
+    EXPR_ADD,
+    EXPR_SUBTRACT,
+    EXPR_DIVIDE,
+    EXPR_MULTIPLY,
+    EXPR_VALUE
+} expr_t;
 
-struct AstNode {
-    enum NodeType type;
+struct expr {
+    expr_t kind;
+    struct expr* left;
+    struct expr* right;
     int value;
-    struct AstNode* left;
-    struct AstNode* right;
 };
 
-typedef struct AstNode AstNode;
+struct expr* expr_create(expr_t kind, 
+			  struct expr *left, 
+			  struct expr *right);
+struct expr* expr_create_value (int value);
+void free_ast(struct expr *root);
 
-AstNode* createValueNode(int value);
-AstNode* createAddNode(AstNode* left, AstNode* right);
-AstNode* createSubNode(AstNode* left, AstNode* right);
-AstNode* createMulNode(AstNode* left, AstNode* right);
-AstNode* createParenNode(AstNode* child);
-int evaluate(AstNode* root);
-void freeTree(AstNode* root);
+int expr_evaluate(struct expr *e);
 
-#endif

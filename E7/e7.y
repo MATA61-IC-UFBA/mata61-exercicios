@@ -5,25 +5,23 @@
 /* interface to the lexer */
  
 extern int yylineno; /* from lexer */
+extern char *yytext;
 int yylex();
 
 void yyerror(char *s, ...)
 {
-   fprintf(stderr,"%s\n",s);
+   fprintf(stdout,"%s\n",s);
 }
 
-int parser_result = 0;
+#define YYSTYPE struct expr *  // por que é necessário?
+struct expr *parser_result = 0;
 %}
+
 
 /* declare tokens */ 
 %token NUMBER
 %token ERROR
 %token EOL
-%token PLUS
-%token MINUS
-%token TIMES
-%token OPENP
-%token CLOSEP
 
 %start program
 
@@ -33,19 +31,20 @@ program
 ;
 
 expr
-: expr PLUS term
-| expr MINUS term
+: expr '+' term
+| expr '-' term
 | term
 ;
 
 term
-: term TIMES factor
+: term '*' factor
+| term '/' factor
 | factor
 ;
 
 factor
 : NUMBER 
-| OPENP expr CLOSEP
+| '(' expr ')'
 ;
 
 %%

@@ -1,4 +1,4 @@
-name: E6
+name: E7
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -19,11 +19,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: install
-      working-directory: ./E6
+      working-directory: ./E7
       run: make install
     - name: compile files
-      working-directory: ./E6
+      working-directory: ./E7
       run: make compile
     - name: test
-      working-directory: ./E6
+      working-directory: ./E7
       run: make test
+
+
