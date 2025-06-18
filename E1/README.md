@@ -1,25 +1,43 @@
-# Exercício E1 - Aquecimento com Flex - 2024.1
+# Exercício E1:  Aquecimento com Flex
 
-- Ler o capítulo 1 do livro flex & bison (está no Google Classroom, atividade E1).
+- Ler o capítulo 1 do livro flex & bison.
 
-a) mywc (atenção: não é um analisador léxico!)
+## Entrega
+
+Arquivos flex:
++ mywc.l - ver item (I)
++ mywc-linux.l - ver item (II)
+
+Saídas:
++ mywc.output
++ wc.output
++ mywc-linux.output
+
+## Roteiro da atividade
+
+(I) mywc (atenção: não é um analisador léxico!)
 
 1. Implemente o "Example 1-1. Word count fb1-1.l" (página 3, livro do Levine). 
-O código-fonte deve ser colocado em um arquivo chamado de mywc.l;
+O código-fonte deve ser colocado em um arquivo chamado de mywc.l. Use o template 
+fornecido;
 2. Rode o Flex (sem diretivas), gerando o arquivo lex.yy.c;
-3. Compile (c ou c++) o arquivo lex.yy.c e gere um executável chamdo de "mywc";
-4. Mostre as saídas para a) e b) no arquivo mywc.output
-   - a) Teste seu programa mywc, usando como entrada seu arquivo wc.l;
-   - b) Teste o wc do linux, usando como entrada seu arquivo mywc.l;
-5. Mostre as saídas para c) e d) no arquivo README.output
-- Teste seu programa mywc, usando como entrada o arquivo README.md;
-- Teste o wc do linux, usando como entrada o arquivo README.md;
-6. Por que há diferença entre as saídas?
+3. Compile o arquivo lex.yy.c e gere um executável chamado de "mywc";
+4. Mostre a saída para a) no arquivo mywc.output e a saída para b) no arquivo wc.output:
+   - a) Teste seu programa mywc, usando como entrada o arquivo README.md;
+```./mywc README.md```
 
-b) mywc-linux
+   - b) `Rode o ```wc``` do linux, usando como entrada o arquivo README.md;
+```wc README.md```
 
-7. Copie mywc.l para mywc-linux.l;
-8. Modifique mywc-linux.l para que a saída gerada sera a mesma do wc do linux.
-Repita os passos 2-5 acima, usando o mywc-linux.l e com o mywc-linux executável.
+As saídas wc.output e mywc.output não devem ser iguais (ver explicação no livro de Levine).
 
+(II) mywc-linux
 
+1. Copie mywc.l para mywc-linux.l e modifique mywc-linux.l para que a saída gerada seja igual a saída do wc do linux.
+2. Rode o Flex (sem diretivas), gerando o arquivo lex.yy.c;
+3. Compile o arquivo lex.yy.c e gere um executável chamado de "mywc-linux";
+4. Mostre a saída para c) no arquivo mywc-linux.output. Agora as saídas devem estar iguais.
+   - c) Teste seu programa mywc-linux, usando como entrada o arquivo README.md;
+```./mywc-linux README.md```
+
+As saídas wc.output e mywc-linux.output devem estar iguais.
