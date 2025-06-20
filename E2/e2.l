@@ -1,6 +1,6 @@
 /* recognize tokens for the calculator */
 
-%option noyywrap nodefault yylineno
+%option noyywrap
 %{
 #include "token.h"
 
@@ -11,11 +11,8 @@
 .       { return ERROR; }
 %%
 
-int main() {
-
+int main(int argc, char **argv) {
 
 }
-
-
 
 

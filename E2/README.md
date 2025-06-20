@@ -1,5 +1,4 @@
-# Exercício E2 - Expressões com Flex - 2024.1
-
+# Exercício E2 - Expressões reais com Flex
 
 Análise léxica com Flex. 
 
@@ -7,7 +6,8 @@ Análise léxica com Flex.
 
 Olhar o capítulo 2 do livro do Levine (Flex&Bison).
 
-- Fazer um analisador léxico para expressões aritméticas sobre números inteiros e os operadores +  -  *  e  / .
+- Fazer um analisador léxico para expressões aritméticas para números inteiros e reais
+e os operadores ```+  -  *  e  / ```.
 O programa recebe uma expressão digitada na entrada padrão -- apenas uma expressão por linha e, a cada chamada da função yylex(), o analisador léxico  retorna o código do token (valor inteiro) e, para dígitos, também o seu valor. Usar o token ERROR para indicar erro léxico.
 O programa main.c deve chamar yylex() e imprimir a saída conforme mostrado abaixo.
 
@@ -32,14 +32,16 @@ código do token: 0
 /* token.h */
 
 typedef enum {
-        EOL=0,          // newline (final de linha)   
-        NUMBER,      // 1
-        PLUS,            // 2
-        MINUS,         // 3
-        TIMES,          // 4
-        DIV,               // 5
-        ERROR,        // 6
+        EOL=0,       // newline (final de linha)   
+        INTEGER,     
+        REAL,        
+        PLUS,        
+        MINUS,       
+        TIMES,       
+        DIV,         
+        ERROR,       // Erro léxico
 } token_t; 
-```
 
-- Entrega: Três arquivos via GitHub: e2.l (programa flex), token.h (definição de tokens) e main.c (chama yylex() até final de linha).
+
+## Entrega
+- Três arquivos via GitHub: e2.l (programa flex), token.h (definição de tokens) e main.c (chama yylex() até final de linha).
