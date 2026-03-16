@@ -1,10 +1,18 @@
-/* Calculator */
-/* Recognize tokens for the calculator and print them out */
+/* recognize tokens for the calculator */
 
-%option main
+%option noyywrap
+%{
+#include "token.h"
+
+%}
 
 %%
 
+
 %%
+
+int main(int argc, char **argv) {
+
+}
 
 

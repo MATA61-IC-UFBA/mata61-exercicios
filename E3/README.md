@@ -1,4 +1,6 @@
-# E3 - Exercício 3
+# Exercício 3 (E3)
+
+MUDAR para Exercício 3 - Validador
 
 
 Modifique o seu analisador léxico para compL de modo que os códigos dos tokens retornados sejam mais específicos. Por exemplo, ao invés de retornar o token SYMC para o símbolo composto "<=", retornar o token 
