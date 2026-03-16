@@ -12,16 +12,18 @@ e os operadores ```+  -  *  e  / ```.
 - O programa recebe uma expressão digitada na entrada padrão, apenas uma expressão por linha e, 
 a cada chamada da função yylex(), 
 o analisador léxico  retorna o código do token (valor inteiro) e, 
-para dígitos, também o seu valor. 
+para constantes, também o seu valor. 
 - Usar o token ERROR para indicar erro léxico.
-- A mensagem de erro não deve ser mostrada após o retorno do token ERROR.
+- A mensagem de erro deve ser mostrada após o retorno do token ERROR.
 - Definir uma função main() que chama yylex() até ler final de linha.
 - O programa main.c deve gerar a saída conforme mostrado abaixo.
 
 
-#  Exemplo. 
+##  Exemplo
+
   - Entrada:  90 * 100 / 18.0 - 48 + 77
   - Saída:
+
 ```
 constante decimal: 90
 código do token: 4
@@ -34,8 +36,10 @@ código do token: 2
 constante decimal: 77
 código do token: 0
 ```
-```
+
 ## Arquivo token.h
+
+```
 
 /* token.h */
 
@@ -50,10 +54,11 @@ typedef enum {
         ERROR,       // Erro léxico
 } token_t; 
 
+```
 
 ## Entrega
 
-- Três arquivos via GitHub: e2.l (programa flex), 
+- Três arquivos via GitHub: e1.l (programa flex), 
 token.h (definição de tokens) e 
 main.c (chama yylex() até final de linha).
 
