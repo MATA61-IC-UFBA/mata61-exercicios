@@ -12,8 +12,8 @@ e as 4 operações aritméticas básicas (+, -, * e /).
 
 ## Entrada e Saída
 
-| Entrada | Saída |
-| 1       | INTEGER | 
+|Entrada|Saída|
+| 1 | INTEGER | 
 
 
 ## Entrega 
