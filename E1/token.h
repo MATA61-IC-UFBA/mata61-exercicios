@@ -1,13 +1,13 @@
 /* token.h */
 
-enum yytokentype {
-INTEGER = 258,
-REAL = 259,
-ADD = 260,
-SUB = 261,
-TIMES = 262,
-DIV = 263,
-EOL = 264,
-ERROR = 265
-};
+typedef enum {
+        EOL=0,       // 0 - Final de linha
+        NUM,         // 1
+        PLUS,        // 2
+        MINUS,       // 3
+        TIMES,       // 4
+        DIV,         // 5
+        ERROR,       // 6 - Erro léxico
+} token_t;
+
 
