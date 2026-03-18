@@ -1,6 +1,0 @@
-// pre
-if (b) 
-   print 1 ; // middle
-// pos
-print 0 ;
-

@@ -1,7 +1,7 @@
 # MATA61 - Exercícios
 
 + [E1](./E1): Flex
-+ [E2](./E2): Inytegração Flex e Bison 
++ [E2](./E2): Integração Flex e Bison 
 + [E3](./E3): Avaliação
 + [E4](./E4): Interpretação
 + [E5](./E5): Geração de AST
