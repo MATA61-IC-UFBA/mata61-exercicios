@@ -1,5 +1,5 @@
 name: Autograding Tests
-'on':
+on:
 - push
 - repository_dispatch
 permissions:
@@ -58,4 +58,4 @@ jobs:
       env:
         E1_RESULTS: "${{steps.e1.outputs.result}}"
       with:
-        runners: e1
+        runners: e1, e1a
