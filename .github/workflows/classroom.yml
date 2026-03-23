@@ -23,7 +23,7 @@ jobs:
       id: e1
       uses: classroom-resources/autograding-io-grader@v1
       with:
-        test-name: E1
+        test-name: E1b
         setup-command: ''
         command: "./E1/e1"
         input: 7012 * 12341 + 8090
@@ -57,5 +57,6 @@ jobs:
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         E1_RESULTS: "${{steps.e1.outputs.result}}"
+        E1A_RESULTS: "${{steps.e1a.outputs.result}}"
       with:
         runners: e1, e1a
