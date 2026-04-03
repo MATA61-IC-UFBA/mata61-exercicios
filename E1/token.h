@@ -10,4 +10,3 @@ typedef enum {
         ERROR,       // 6 - Erro léxico
 } token_t;
 
-
