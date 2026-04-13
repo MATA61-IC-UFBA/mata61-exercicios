@@ -1,7 +1,7 @@
 # MATA61 - Exercícios
 
 + [E1](./E1): Flex
-+ [E2](./E2): Análise 
++ [E2](./E2): Análise Sintática com Bison 
 
 <!--
 + [E4](./E4): Interpretação

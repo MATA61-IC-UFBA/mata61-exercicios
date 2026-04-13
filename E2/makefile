@@ -12,4 +12,8 @@ all:
 	make flex
 	make compile
 
+clean:
+	rm lex.yy.c
+	rm e2.c
+	rm e2
 

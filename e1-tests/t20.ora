@@ -1,0 +1,10 @@
+categoria do token: 3
+categoria do token: 1, constante numérica: 01
+categoria do token: 2
+categoria do token: 1, constante numérica: 2000
+categoria do token: 4
+categoria do token: 1, constante numérica: 85.123
+categoria do token: 5
+categoria do token: 1, constante numérica: 60
+erro léxico: caractere inválido
+categoria do token: 1, constante numérica: 5.50
