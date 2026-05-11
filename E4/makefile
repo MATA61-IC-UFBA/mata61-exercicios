@@ -5,7 +5,7 @@ install:
 compile:
 	bison --defines=token.h --output=e4.c e4.y
 	flex e4.l
-	gcc -o valida e4.c lex.yy.c main.c
+	gcc -o valida e4.c lex.yy.c main.c ast.c
 
 test:
 	./run_tests.sh
