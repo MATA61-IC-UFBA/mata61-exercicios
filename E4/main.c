@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "ast.h"
 #include "token.h"
 
 extern int yyparse();
-extern int parser_result;
+extern struct expr* parser_result;
 
 int main()
 {
-   if (yyparse() == 0)
-      printf("%d\n",parser_result);
+    if (!yyparse()) {
+	expr_print(parser_result);
+	fprintf(stdout, "\n");
+    }
 
-} 
+    exit(0);
+}
 
 void yyerror(char *s, ...)
 {
-    printf("%s\n", s);
+    fprintf(stdout,"%s\n", s);
 }

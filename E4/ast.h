@@ -20,7 +20,12 @@ struct expr* expr_create(expr_t kind,
 
 struct expr* expr_create_value (int value);
 
-void free_ast(struct expr *root);
+void expr_print(struct expr *e);
 
-int expr_evaluate(struct expr *e);
+
+// void free_ast(struct expr *root);
+
+// int expr_evaluate(struct expr *e);
+
+
 

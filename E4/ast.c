@@ -19,25 +19,22 @@ struct expr* expr_create(expr_t kind,
 	return e;
 }
 
-int expr_evaluate(struct expr *e) {
+void expr_print(struct expr *e) {
+    if (!e) 
+       return;
 
-    if (!e) return 0;
+    fprintf(stdout,"(");
+    expr_print(e->left);
 
-    int l = expr_evaluate(e->left);
-    int r = expr_evaluate(e->right);
- 
     switch(e->kind) {
-	case EXPR_VALUE: { return e->value; }
-        case EXPR_ADD: { return l+r; }
-        case EXPR_SUBTRACT: { return l-r; }
-        case EXPR_MULTIPLY: { return l*r; }
-        case EXPR_DIVIDE: if (r != 0) 
-				  return l/r; 
-			  else { 
-				  fprintf(stdout,"runtime error: divide by zero\n"); 
-				  fprintf(stderr,"runtime error: divide by zero\n");
-				  exit(1); 
-			       }
+        case EXPR_VALUE: { fprintf(stdout,"%d", e->value); break; }
+        case EXPR_ADD: { fprintf(stdout,"+"); break; }
+        case EXPR_SUBTRACT: { fprintf(stdout,"-"); break; }
+        case EXPR_MULTIPLY: { fprintf(stdout,"*"); break; }
+        case EXPR_DIVIDE: { fprintf(stdout,"/"); break; } 
     }
-    return 0;
+
+    expr_print(e->right);
+    fprintf(stdout,")");
 }
+
