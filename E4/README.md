@@ -3,7 +3,7 @@
 Este exercício tem como objetivo implementar com Bison
 e ações semânticas a construção de uma árvore sintática abstrata (AST)
 para uma linguagem de expressões aritméticas,
-e depois imprime a expressão após caminhar pela AST.
+e depois imprimir a expressão após caminhar pela AST.
 
 Copiar os arquivos do exercício E3 e implementar o programa de geração de ASTs
 para a linguagem de expressões, seguindo o material da seção 5.4 do livro de D. Thain.
