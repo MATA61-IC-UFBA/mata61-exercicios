@@ -1,0 +1,7 @@
+let
+  x: integer;
+  x: float;
+in
+  x = 1;
+  x   
+end

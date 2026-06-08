@@ -1,0 +1,7 @@
+let
+zero: integer;
+in
+zero = 0;
+zero - 4
+end
+

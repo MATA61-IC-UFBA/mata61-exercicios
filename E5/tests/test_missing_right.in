@@ -1,0 +1,5 @@
+let
+  x: integer;
+in
+  x = y + 1
+end

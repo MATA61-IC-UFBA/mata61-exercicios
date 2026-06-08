@@ -1,0 +1,7 @@
+let
+cte: float;
+in
+cte = 85.123;
+1 + 2000 * cte / 60 
+end
+

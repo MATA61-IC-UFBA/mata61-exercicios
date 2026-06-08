@@ -1,0 +1,8 @@
+let
+  x: integer;
+  y: float;
+in
+  x = 1.5;
+  y = 2;
+  x + y  
+end

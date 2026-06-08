@@ -1,0 +1,7 @@
+let
+zero: integer;
+in
+zero = 4;
+- (zero * 15)
+end
+

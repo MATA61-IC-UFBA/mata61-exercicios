@@ -1,0 +1,4 @@
+Error: Missing variable declaration
+Error: The '+' operation has operands with incompatible types
+Error: The '=' has lhs and rhs with incompatible types
+3 semantic error(s)

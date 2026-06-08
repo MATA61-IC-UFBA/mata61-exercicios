@@ -1,0 +1,7 @@
+let
+  x: integer;
+in
+  x = 1;
+  y = 2.5;
+  x + y  
+end
